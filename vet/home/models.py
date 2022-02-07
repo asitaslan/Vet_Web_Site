@@ -15,6 +15,8 @@ def get_profile_image_path(instance, filename):
 
 def get_animal_image_path(instance, filename):
     return os.path.join('Animal_Photos', instance.name, filename)
+
+
 ID_LENGTH = 20
 length = 20
 def id_gen() -> str:
@@ -39,7 +41,7 @@ class UserManager(BaseUserManager):
         return user
 
     def create_user(self, username, email=None, password=None, **extra_fields):
-        return self._create_user(username, email, password, False, False, ' ',
+        return self._create_user(username, email, password, False, False,
                                  **extra_fields)
 
     def create_superuser(self, username, email, password, **extra_fields):
