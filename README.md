@@ -36,6 +36,8 @@
 - paste that path to your browser
 ![13](https://user-images.githubusercontent.com/45763073/153283211-8646c44b-fb0a-47c4-b3eb-4aaf9192d70f.png)
 
-#Not: I created a superuser and push that in database which you can use
+# Not: I created a superuser and push that in database which you can use
 # username : admin
-#password : 123456Admin
+# password : 123456Admin
+# if the user will not login run command line : python manage.py createsuperuser
+# after that yu can enter your username, email and password for admin user
