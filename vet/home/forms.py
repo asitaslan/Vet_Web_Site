@@ -32,12 +32,12 @@ class AnimalForm(forms.ModelForm):
         model = Animal
         fields = ['name','species','genus','age','description', 'image',]
         widgets = {
-            'name': TextInput(attrs={'class': 'input', 'placeholder': 'name'}),
-            'species': TextInput(attrs={'class': 'input', 'placeholder': 'species'}),
-            'genus': TextInput(attrs={'class': 'input', 'placeholder': 'genus'}),
-            'age': TextInput(attrs={'class': 'input', 'placeholder': 'age'}),
-            'description': TextInput(attrs={'class': 'input', 'placeholder': 'description'}),
-            'image': FileInput(attrs={'class': 'input', 'placeholder': 'image', }),
+            'name': TextInput(attrs={'class': 'input', 'placeholder': 'isim'}),
+            'species': TextInput(attrs={'class': 'input', 'placeholder': 'tür'}),
+            'genus': TextInput(attrs={'class': 'input', 'placeholder': 'cins'}),
+            'age': TextInput(attrs={'class': 'input', 'placeholder': 'yaş'}),
+            'description': TextInput(attrs={'class': 'input', 'placeholder': 'açıklama'}),
+            'image': FileInput(attrs={'class': 'input', 'placeholder': 'resim', }),
         }
 
 
