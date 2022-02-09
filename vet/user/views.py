@@ -78,4 +78,14 @@ def users(request):
     }
     return render(request, 'users.html', context)
 
-
+#Delete User
+@login_required(login_url='/login')
+def delete_user(request, username):
+    current_user = request.user
+    if current_user.is_superuser:
+        User.objects.filter(username=username).delete()
+        messages.success(request, 'Kullanici Silindi')
+        return HttpResponseRedirect('/users')
+    else:
+        messages.error(request,'Bu islemi yapma yetkiniz yok')
+        return HttpResponseRedirect('/users')

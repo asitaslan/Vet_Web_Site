@@ -1,0 +1,44 @@
+{% extends 'homebase.html' %}
+
+{% block content %}
+<div class="span12">
+    <table cellpadding="3" width="950">
+        {% if animals %}
+        <tr>
+            <th><h2>Resim :</h2></th>
+            <th><h2>Hayvan Adi : </h2></th>
+        </tr>
+
+        {% for rs in animals %}
+        <tr>
+            {% if rs.image %}
+            <th><a href="/animal/{{ rs.id }}"> <img src="{{ rs.image.url }}" style="width: 100px; height: 100px;" alt=""></a> </th>
+            {% endif %}
+            <th><h4><a href="/animal/{{ rs.id }}">{{ rs.name }}</a></h4></th>
+        </tr>
+        {% endfor %}
+        {%  endif %}
+    </table>
+</div>
+<div class="span12">
+    <table cellpadding="3" width="950">
+        {% if users %}
+        <tr>
+            <th><h2>Profil Fotografi :</h2></th>
+            <th><h2>Adi Soyadi :</h2></th>
+            <th><h2>Kullnici Adi :</h2></th>
+        </tr>
+
+        {% for rs in users %}
+        <tr>
+            {% if rs.profile_image %}
+            <th><a href="/user/{{ rs.id }}"> <img src="{{ rs.profile_image.url }}" style="width: 100px; height: 100px;" alt=""></a> </th>
+            {% endif %}
+            <th><h4>{{ rs.first_name}} {{ rs.last_name }}</h4></th>
+            <th><a href="/user/{{ rs.id }}"> {{ rs.username }}</a> </th>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
+</div>
+{% endblock %}

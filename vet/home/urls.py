@@ -13,4 +13,5 @@ urlpatterns = [
     path('animal/<id>/', views.animal_detail, name='animal_detail'),
     path('update_animal/<id>/',views.update_animal, name='update_animal'),
     path('delete/<id>/', views.delete_animal, name='delete_animal'),
+    path('search/', views.search, name='search'),
 ]

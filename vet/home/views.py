@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import logout, login, authenticate
 from django.contrib import messages
 
-from home.forms import SignUpForm, AnimalForm
+from home.forms import SignUpForm, AnimalForm, SearchForm
 from home.models import  Animal
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
@@ -123,13 +123,21 @@ def animal_detail(request, id):
 #Edit Animal
 @login_required(login_url='/login')
 def update_animal(request, id):
+    url = request.META.get('HTTP_REFERER')
     animal = Animal.objects.get(id=id)
+    current_user = request.user
+    owner_animal = User.objects.get(id=animal.owner.id)
     if request.method == 'POST':
         form = AnimalForm(request.POST, request.FILES, instance=animal)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Guncelleme Basarili')
-            return HttpResponseRedirect('/user')
+           if current_user.is_superuser or current_user == owner_animal:
+               form.save()
+               messages.success(request, 'Guncelleme Basarili')
+               return HttpResponseRedirect(url)
+           else:
+               messages.error(request, 'Bu isleme yapma yetkiniz yok' +str(form.errors))
+               return HttpResponseRedirect(url)
+
         else:
             messages.success(request, 'animal Form Error: ' + str(form.errors))
             return HttpResponseRedirect('/update_animal/' + str(id))
@@ -153,3 +161,17 @@ def delete_animal(request, id):
     else:
         messages.error(request,'Bu islemi yapma yetkiniz yok')
         return HttpResponseRedirect('/animals')
+
+
+def search(request):
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            animals = Animal.objects.filter(name__contains=query)
+            users = User.objects.filter(first_name__contains=query)
+            context = {'animals': animals,
+                       'users': users,
+                       }
+            return render(request, 'search.html', context)
+    return HttpResponseRedirect('/')

@@ -20,7 +20,7 @@
                         {% if rs.image %}
                         <a href="/animal/{{ rs.id }}/"><img style="width:250px; height:250px;" src="{{ rs.image.url }}" alt=""></a>
                         {% endif %}
-                        <a onclick="return confirm('Silmek istediginize emin misiniz')" class="btn btn-primary" href="/delete/{{ rs.id }}/">Sil</a>
+
                     </div>
                 </li>
                 {% endfor %}

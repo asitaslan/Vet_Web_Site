@@ -17,9 +17,13 @@
           <td><img width="250" src="{{ user.profile_image.url }}" alt=""></td>
           {% endif %}
         </tr>
+
+
+
         <tr>
           <th>Ad Soyad</th>
           <td>{{ user.first_name }} {{ user.last_name}} </td>
+
         </tr>
         <tr>
           <th>Email</th>
@@ -50,6 +54,7 @@
             <li class="span3">
               <div class="thumbnail">
                 <a  href="/animal/{{ rs.id }}/"><h4>{{ rs.name }}</h4></a>
+
                 <a href="#" class="tag"></a>
                 {% if rs.image %}
                 <a href="/animal/{{ rs.id }}/"><img style="width: 200px; height: 200px;" src="{{ rs.image.url }}" alt="bootstrap-ring"></a>

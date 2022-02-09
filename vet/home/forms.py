@@ -25,6 +25,8 @@ class SignUpForm(UserCreationForm):
                   'password2',
                   )
 
+
+#Animal form
 class AnimalForm(forms.ModelForm):
     class Meta:
         model = Animal
@@ -40,5 +42,7 @@ class AnimalForm(forms.ModelForm):
 
 
 
-
+#Search form
+class SearchForm(forms.Form):
+    query = forms.CharField(label='Search', max_length=100)
 
