@@ -1,4 +1,5 @@
 # Vet_Web_Site
+
 -download the project zip
 
 ![1](https://user-images.githubusercontent.com/45763073/153281272-dc793358-8a92-4ef1-9778-c7a3dbb9e922.png)
@@ -35,4 +36,6 @@
 - paste that path to your browser
 ![13](https://user-images.githubusercontent.com/45763073/153283211-8646c44b-fb0a-47c4-b3eb-4aaf9192d70f.png)
 
-
+#Not: I created a superuser and push that in database which you can use
+# username : admin
+#password : 123456Admin
