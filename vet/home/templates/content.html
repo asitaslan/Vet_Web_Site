@@ -1,0 +1,45 @@
+{% load static %}
+<div class="span12">
+    <div class="well well-small">
+        <h3>Hayvanlar </h3>
+        <hr class="soften"/>
+        <div class="row-fluid">
+            <div id="newProductCar" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <ul class="thumbnails">
+                            {% for rs in animals %}
+                            <li class="span3">
+                                <div class="thumbnail">
+                                    <h5>{{ rs.name }}</h5>
+                                    <a href="#" class="tag"></a>
+                                    <a href="/animal/{{ rs.id }}/"><img style="width: 200px; height: 200px;" src="{{ rs.image.url }}" alt="bootstrap-ring"></a>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="well well-small">
+        <h3>Hayvan Sahipleri </h3>
+        <hr class="soften"/>
+        <div class="row-fluid">
+            <ul class="thumbnails">
+                {% for rs in users %}
+                <li class="span4">
+                    <div class="thumbnail">
+                        <a  href="/user/{{ rs.id }}/"><h5>{{ rs.username }}</h5></a>
+                        {% if rs.profile_image %}
+                           <a  href="/user/{{ rs.id }}/"><img style="width: 200px; height: 200px;" src="{{ rs.profile_image.url }}" alt=""></a>
+                        {% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

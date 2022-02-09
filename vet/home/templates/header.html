@@ -1,0 +1,64 @@
+{% load static %}
+
+<script>
+    $(function () {
+        $("#query").autocomplete({
+            source: "/search_auto/",
+            select: function (event, ui) { //item selected
+                AutoCompleteSelectHandler(event, ui)
+            },
+            minLength: 2,
+        });
+    });
+
+    function AutoCompleteSelectHandler(event, ui) {
+        var selectedObj = ui.item;
+    }
+</script>
+
+
+<div class="container">
+    <div id="gototop"> </div>
+    <header id="header">
+
+    </header>
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+
+                </a>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="/AnaSayfa/">Ana Sayfa	</a></li>
+                        <li class=""><a href="/animals/">Hayvanlar</a></li>
+                        <li class=""><a href="/users/">Kullanicilar</a></li>
+                    </ul>
+                    <form action="/search/" class="navbar-search pull-left" method="post">
+                        {% csrf_token %}
+                        <input id="query" name="query" class="search-query span2" type="text"
+                               placeholder="Enter your keyword">
+                        <button class="icon-search"><i class="fa fa-search"></i></button>
+
+
+                    </form>
+                    <ul class="nav pull-left">
+                        <li class="dropdown">
+                            {% if user.id is not None %}
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ user.first_name }} {{ user.last_name }}<b
+                                    class="caret"></b></a>
+                            {% else %}
+                            <a href="/login">Log In<a href="/signup">Sign Up</a> </a>
+                            {% endif %}
+                            <ul class="dropdown">
+                                <li><a href="/user">My Account</a></li>
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

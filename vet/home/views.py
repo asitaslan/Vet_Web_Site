@@ -1,12 +1,31 @@
 from django.shortcuts import render, redirect
-from home.forms import SignUpForm, UserUpdateForm
 from django.contrib.auth import logout, login, authenticate
 from django.contrib import messages
-from home.models import User
+
+from home.forms import SignUpForm
+from home.models import  Animal
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
+
+
+#index page
+from user.models import User
+
+
+def index(request):
+    animals = Animal.objects.all()
+    users = User.objects.all()
+    context = {
+        'animals': animals,
+        'users': users
+    }
+
+    return render(request, 'index.html', context)
+
+
+
 
 #Register
 def signup_view(request):
@@ -49,39 +68,11 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-#Update User
-@login_required(login_url='/login')  # Check login
-def user_update(request):
 
-    if request.method == 'POST':
-        user_form = UserUpdateForm(request.POST, instance=request.user)  # request.user is user data
-        if user_form.is_valid():
-            user_form.save()
-            messages.success(request, 'Profiliniz Guncellendi')
-            return redirect('/user')
-    else:
-        user_form = UserUpdateForm(instance=request.user)
+#List Animals
+def animals(request):
+    animals = Animal.objects.all().order_by('?')
     context = {
-        'user_form': user_form
+        'animals':animals
     }
-    return render(request, 'update_user.html', context)
-
-#Change password
-@login_required(login_url='/login')  # Check login
-def change_password(request):
-    if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)  # Important!
-            messages.success(request, 'Sifreniz basarili bir sekilde degistirildi')
-            return HttpResponseRedirect('/user')
-        else:
-            messages.error(request, 'Lutfen sifreyi asagidaki kriterlere gore olusturunuz.<br>' + str(form.errors))
-            return HttpResponseRedirect('/user/password')
-    else:
-        form = PasswordChangeForm(request.user)
-        context = {
-            'form':form
-        }
-        return render(request, 'change_password.html', context)
+    return render(request, 'animals.html', context)

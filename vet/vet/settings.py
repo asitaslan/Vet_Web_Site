@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
+    'user.apps.UserConfig',
 ]
 
 MIDDLEWARE = [
@@ -127,4 +128,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'home.User'
+AUTH_USER_MODEL = 'user.User'

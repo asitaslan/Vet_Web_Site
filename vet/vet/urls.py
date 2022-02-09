@@ -16,17 +16,15 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
-from home import views
+from django.urls import path, include
+
+from user import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', views.login_view, name='login_view'),
-    path('signup/', views.signup_view, name='signup_view'),
-    path('logout/', views.logout_view, name='logout_view'),
-    path('update/user/', views.user_update, name="user_update"),
-    path('change-password/', views.change_password, name="user_update"),
-
+    path('',include('home.urls')),
+    path('user/', include('user.urls')),
+    path('user/<id>/', views.user_detail, name="user_detail")
 ]
-if settings.DEBUG:  # new
+if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
