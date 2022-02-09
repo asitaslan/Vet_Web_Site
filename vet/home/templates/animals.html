@@ -1,25 +1,31 @@
 {% extends 'homebase.html' %}
-
 {% block content %}
-    <div class="span9">
-        <div class="well well-small">
-            <hr>
-            <div class="row-fluid">
-                <ul class="thumbnails">
-                    {% for rs in animals %}
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <h5>{{ rs.name }}</h5>
-                                <a href="/animal/{{ rs.id }}/"><img style="width:250px; height:250px;" src="{{ rs.image.url }}" alt=""></a>
-                                <div class="caption cntr">
-                                    <p>{{ rs.title }}</p>
-                                    <br class="clr">
-                                </div>
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
+<div class="span9">
+    <div class="well well-small">
+        <hr>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="row-fluid">
+            <ul class="thumbnails">
+                {% for rs in animals %}
+                <li class="span4">
+                    <div class="thumbnail">
+                        <a  href="/animal/{{ rs.id }}/"><h5>{{ rs.name }}</h5></a>
+
+                        {% if rs.image %}
+                        <a href="/animal/{{ rs.id }}/"><img style="width:250px; height:250px;" src="{{ rs.image.url }}" alt=""></a>
+                        {% endif %}
+                        <a onclick="return confirm('Silmek istediginize emin misiniz')" class="btn btn-primary" href="/delete/{{ rs.id }}/">Sil</a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
+</div>
 {% endblock %}

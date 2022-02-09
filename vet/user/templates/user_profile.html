@@ -68,11 +68,12 @@
           {% for rs in user_animals %}
           <li class="span3">
             <div class="thumbnail">
-              <h4>{{rs.name}}</h4>
+              <a  href="/animal/{{ rs.id }}/"><h5>{{ rs.name }}</h5></a>
               <a href="#" class="tag"></a>
               {% if rs.image %}
               <a href="/animal/{{ rs.id }}/"><img style="width: 200px; height: 200px;" src="{{ rs.image.url }}" alt="bootstrap-ring"></a>
               {% endif %}
+              <a  href="/update_animal/{{ rs.id }}/"><h5>Guncelle</h5></a>
             </div>
           </li>
           {% endfor %}

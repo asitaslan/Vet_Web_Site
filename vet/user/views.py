@@ -68,3 +68,14 @@ def change_password(request):
             'form':form
         }
         return render(request, 'change_password.html', context)
+
+
+#Users
+def users(request):
+    users = User.objects.all().order_by('?')
+    context = {
+        'users':users
+    }
+    return render(request, 'users.html', context)
+
+

@@ -1,0 +1,24 @@
+{% extends 'homebase.html' %}
+
+{% block content %}
+    <div class="span9">
+        <div class="well well-small">
+            <hr>
+            <div class="row-fluid">
+                <ul class="thumbnails">
+                    {% for rs in users %}
+                        <li class="span4">
+                            <div class="thumbnail">
+                                <a  href="/user/{{ rs.id }}/"><h5>{{ rs.username }}</h5></a>
+                                {% if rs.profile_image %}
+                                <a href="/user/{{ rs.id }}/"><img style="width:250px; height:250px;" src="{{ rs.profile_image.url }}" alt=""></a>
+                                {% endif %}
+
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

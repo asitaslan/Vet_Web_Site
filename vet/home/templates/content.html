@@ -11,7 +11,7 @@
                             {% for rs in animals %}
                             <li class="span3">
                                 <div class="thumbnail">
-                                    <h5>{{ rs.name }}</h5>
+                                    <a  href="/animal/{{ rs.id }}/"><h5>{{ rs.name }}</h5></a>
                                     <a href="#" class="tag"></a>
                                     <a href="/animal/{{ rs.id }}/"><img style="width: 200px; height: 200px;" src="{{ rs.image.url }}" alt="bootstrap-ring"></a>
                                 </div>

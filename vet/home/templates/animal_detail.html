@@ -1,0 +1,51 @@
+{% extends 'homebase.html' %}
+{% block content %}
+<div>
+  <div class="span8">
+    <div class="well">
+      <div class="section-title">
+        <h3 class="title">Genel Bilgiler</h3>
+
+      </div>
+      <hr class="soften"/>
+      <table class="table table-bordered table-condensed">
+        <tr>
+          <th></th>
+          {% if animal.image %}
+          <td><img width="250" src="{{ animal.image.url }}" alt=""></td>
+          {% endif %}
+        </tr>
+        <tr>
+          <th>Ad</th>
+          <td>{{ animal.name }}</td>
+
+          <td class="text-left">
+            <a onclick="return confirm('Silmek istediginize emin misiniz')" class="btn btn-primary" href="/delete/{{ animal.id }}/">Sil</a>
+          </td>
+        </tr>
+        <tr>
+          <th>Tur</th>
+          <td>{{ animal.species }}</td>
+        </tr>
+        <tr>
+          <th>Cins</th>
+          <td>{{ animal.genus }}</td>
+        </tr>
+        <tr>
+          <th>Yas</th>
+          <td>{{ animal.age }}</td>
+        </tr>
+        <tr>
+          <th>Aciklama</th>
+          <td>{{ animal.description }}</td>
+        </tr>
+        <tr>
+          <th>Sahibi</th>
+          <td><a href="/user/{{ animal.owner.id }}/">{{ animal.owner.username }}</a></td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

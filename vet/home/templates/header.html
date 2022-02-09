@@ -34,6 +34,7 @@
                         <li class="active"><a href="/AnaSayfa/">Ana Sayfa	</a></li>
                         <li class=""><a href="/animals/">Hayvanlar</a></li>
                         <li class=""><a href="/users/">Kullanicilar</a></li>
+                        <li class=""><a href="/add_animal/">Hayvan Ekle</a></li>
                     </ul>
                     <form action="/search/" class="navbar-search pull-left" method="post">
                         {% csrf_token %}
@@ -52,7 +53,7 @@
                             <a href="/login">Log In<a href="/signup">Sign Up</a> </a>
                             {% endif %}
                             <ul class="dropdown">
-                                <li><a href="/user">My Account</a></li>
+                                <li><a href="/user">Hesabim</a></li>
                                 <li><a href="/logout">Logout</a></li>
                             </ul>
                         </li>
