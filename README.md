@@ -28,7 +28,7 @@
 - now got to project with " cd vet"
 ![10](https://user-images.githubusercontent.com/45763073/153282706-d5bbfbb8-5a7b-450e-bc82-782301aeeb45.png)
 - I alreadey run the migrations and upload the database so you do not have run migrations, you can run project directly 
-- run this comman "python manage.py runserver"
+- run this command "python manage.py runserver"
  ![11](https://user-images.githubusercontent.com/45763073/153283036-8985ab17-5bde-44b9-8ba8-a62481b650c1.png)
 - now copy yours local path
 ![12](https://user-images.githubusercontent.com/45763073/153283135-d80f8f83-8a4a-48c3-8204-f77979bec650.png)
